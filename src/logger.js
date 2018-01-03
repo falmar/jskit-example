@@ -4,8 +4,8 @@ export default class Logger {
   }
 
   save (todo) {
-    this.svc.save(todo)
+    console.log('saving: ', todo)
 
-    console.log('saved: ', todo)
+    return this.svc.save(todo)
   }
 }

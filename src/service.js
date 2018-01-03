@@ -4,6 +4,8 @@ export default class Service {
   }
 
   save (todo) {
+    this.dataLayer.save(todo)
 
+    return todo
   }
 }
