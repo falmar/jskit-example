@@ -3,9 +3,23 @@ export default class Service {
     this.dataLayer = dataLayer
   }
 
-  save (todo) {
-    this.dataLayer.save(todo)
+  index () {
+    return this.dataLayer.index()
+  }
 
-    return todo
+  load (id) {
+    return this.dataLayer.load(id)
+  }
+
+  save (todo) {
+    return this.dataLayer.save(todo)
+  }
+
+  update (id, todo) {
+    return this.dataLayer.update(id, todo)
+  }
+
+  delete (id) {
+    return this.dataLayer.delete(id)
   }
 }

@@ -3,19 +3,29 @@ export default class TodoDataLayer {
     this.data = []
   }
 
+  index () {
+    return this.data
+  }
+
   load (id) {
-    this.data.find(t => t.id === id)
+    return this.data.find(t => t.id === id)
   }
 
   save (todo) {
     this.data.push(todo)
+
+    return todo
   }
 
-  update (todo) {
-    this.data.map(t => t.id === todo.d ? todo : t)
+  update (id, todo) {
+    this.data = this.data.map(t => t.id === id ? todo : t)
+
+    return todo
   }
 
-  delete (todo) {
-    this.data.filter(t => t.id !== todo.id)
+  delete (id) {
+    this.data = this.data.filter(t => t.id !== id)
+
+    return null
   }
 }
