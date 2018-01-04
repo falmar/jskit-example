@@ -8,7 +8,7 @@ import Logger from './logger'
 import { saveTodoEndpoint } from './endpoint'
 import { decodeSaveTodoRequest, encodeSaveTodoResponse } from './transport'
 
-import { NewServer } from './kit/server'
+import { NewServer } from './kit/http/server'
 
 let service = new Service(new DataLayer())
 service = new Logger(service)
