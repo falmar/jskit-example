@@ -19,36 +19,36 @@ import {
   decodeDeleteTodoRequest
 } from './transport'
 
-import { NewServer } from './kit/http/server'
+import { NewServer as HTTPServer } from './kit/http/server'
 
 let service = new Service(new DataLayer())
 service = new Logger(service)
 
-const indexTodo = NewServer(
+const indexTodo = HTTPServer(
   indexTodoEnpoint(service),
   decodeIndexTodoRequest,
   encodeIndexTodoResponse
 )
 
-const loadTodo = NewServer(
+const loadTodo = HTTPServer(
   loadTodoEnpoint(service),
   decodeLoadTodoRequest,
   encodeLoadTodoResponse
 )
 
-const saveTodo = NewServer(
+const saveTodo = HTTPServer(
   saveTodoEndpoint(service),
   decodeSaveTodoRequest,
   encodeSaveTodoResponse
 )
 
-const updateTodo = NewServer(
+const updateTodo = HTTPServer(
   updateTodoEndpoint(service),
   decodeUpdateTodoRequest,
   encodeUpdateTodoResponse
 )
 
-const deleteTodo = NewServer(
+const deleteTodo = HTTPServer(
   deleteTodoEndpoint(service),
   encodeDeleteTodoResponse,
   decodeDeleteTodoRequest

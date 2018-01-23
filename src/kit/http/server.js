@@ -1,10 +1,10 @@
 export const NewServer = (endpoint, decoder, encoder) => {
   return (req, res) => {
-    const context = {}
+    const ctx = {}
 
-    const request = decoder(context, req)
-    const response = endpoint(context, request)
-
-    encoder(context, res, response)
+    return decoder(ctx, req)
+      .then(request => endpoint(ctx, request))
+      .then(response => encoder(ctx, res, response))
+      .catch(err => console.error(err))
   }
 }

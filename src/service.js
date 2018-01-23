@@ -3,23 +3,23 @@ export default class Service {
     this.dataLayer = dataLayer
   }
 
-  index () {
+  async index () {
     return this.dataLayer.index()
   }
 
-  load (id) {
+  async load (id) {
     return this.dataLayer.load(id)
   }
 
-  save (todo) {
+  async save (todo) {
     return this.dataLayer.save(todo)
   }
 
-  update (id, todo) {
+  async update (id, todo) {
     return this.dataLayer.update(id, todo)
   }
 
-  delete (id) {
+  async delete (id) {
     return this.dataLayer.delete(id)
   }
 }

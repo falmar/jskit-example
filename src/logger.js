@@ -3,36 +3,38 @@ export default class Logger {
     this.svc = svc
   }
 
-  index () {
-    const arr = this.svc.index()
+  async index () {
+    const arr = await this.svc.index()
 
     console.log('amount: ', arr.length)
 
     return arr
   }
 
-  load (id) {
-    const todo = this.svc.load(id)
+  async load (id) {
+    const todo = await this.svc.load(id)
 
     console.log('loaded:', todo)
 
     return todo
   }
 
-  save (todo) {
+  async save (todo) {
+    console.log(`saving:`, todo)
+
     return this.svc.save(todo)
   }
 
-  update (id, todo) {
-    todo = this.svc.update(id, todo)
+  async update (id, todo) {
+    todo = await this.svc.update(id, todo)
 
     console.log(`updating [${id}]:`, todo)
 
     return todo
   }
 
-  delete (id) {
-    const r = this.svc.delete(id)
+  async delete (id) {
+    const r = await this.svc.delete(id)
 
     console.log('deleted:', id)
 
