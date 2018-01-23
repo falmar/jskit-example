@@ -1,43 +1,76 @@
 export default class Logger {
-  constructor (svc) {
+  constructor (svc, superFancyLogger) {
     this.svc = svc
+    this.logger = superFancyLogger
   }
 
   async index () {
-    const arr = await this.svc.index()
+    try {
+      const arr = await this.svc.index()
 
-    console.log('amount: ', arr.length)
+      this.logger.log('amount: ', arr.length)
 
-    return arr
+      return arr
+    } catch (err) {
+      this.logger.error(`Error while loading todos: ${err.message}`)
+
+      throw err
+    }
   }
 
   async load (id) {
-    const todo = await this.svc.load(id)
+    try {
+      const todo = await this.svc.load(id)
 
-    console.log('loaded:', todo)
+      this.logger.log('loaded:', todo)
 
-    return todo
+      return todo
+    } catch (err) {
+      this.logger.error(`Error while loading todos: ${err.message}`)
+
+      throw err
+    }
   }
 
   async save (todo) {
-    console.log(`saving:`, todo)
+    try {
+      todo = await this.svc.save(todo)
 
-    return this.svc.save(todo)
+      this.logger.log(`saving:`, todo)
+
+      return todo
+    } catch (err) {
+      this.logger.error(`Error while saving todo: ${err.message}`)
+
+      throw err
+    }
   }
 
   async update (id, todo) {
-    todo = await this.svc.update(id, todo)
+    try {
+      todo = await this.svc.update(id, todo)
 
-    console.log(`updating [${id}]:`, todo)
+      this.logger.log(`updating [${id}]:`, todo)
 
-    return todo
+      return todo
+    } catch (err) {
+      this.logger.error(`Error while updatig todo ${id}: ${err.message}`)
+
+      throw err
+    }
   }
 
   async delete (id) {
-    const r = await this.svc.delete(id)
+    try {
+      const r = await this.svc.delete(id)
 
-    console.log('deleted:', id)
+      this.logger.log('deleted:', id)
 
-    return r
+      return r
+    } catch (err) {
+      this.logger.error(`Error while deleting todo ${id}: ${err.message}`)
+
+      throw err
+    }
   }
 }

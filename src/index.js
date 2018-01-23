@@ -5,53 +5,42 @@ import DataLayer from './todo'
 import Service from './service'
 import Logger from './logger'
 
-import { indexTodoEnpoint, loadTodoEnpoint, saveTodoEndpoint, updateTodoEndpoint, deleteTodoEndpoint } from './endpoint'
-import {
-  decodeIndexTodoRequest,
-  encodeIndexTodoResponse,
-  decodeLoadTodoRequest,
-  encodeLoadTodoResponse,
-  decodeSaveTodoRequest,
-  encodeSaveTodoResponse,
-  decodeUpdateTodoRequest,
-  encodeUpdateTodoResponse,
-  encodeDeleteTodoResponse,
-  decodeDeleteTodoRequest
-} from './transport'
+import * as Endpoints from './endpoint'
+import * as Transports from './transport'
 
 import { NewServer as HTTPServer } from './kit/http/server'
 
 let service = new Service(new DataLayer())
-service = new Logger(service)
+service = new Logger(service, console)
 
 const indexTodo = HTTPServer(
-  indexTodoEnpoint(service),
-  decodeIndexTodoRequest,
-  encodeIndexTodoResponse
+  Endpoints.indexTodoEnpoint(service),
+  Transports.decodeIndexTodoRequest,
+  Transports.encodeIndexTodoResponse
 )
 
 const loadTodo = HTTPServer(
-  loadTodoEnpoint(service),
-  decodeLoadTodoRequest,
-  encodeLoadTodoResponse
+  Endpoints.loadTodoEnpoint(service),
+  Transports.decodeLoadTodoRequest,
+  Transports.encodeLoadTodoResponse
 )
 
 const saveTodo = HTTPServer(
-  saveTodoEndpoint(service),
-  decodeSaveTodoRequest,
-  encodeSaveTodoResponse
+  Endpoints.saveTodoEndpoint(service),
+  Transports.decodeSaveTodoRequest,
+  Transports.encodeSaveTodoResponse
 )
 
 const updateTodo = HTTPServer(
-  updateTodoEndpoint(service),
-  decodeUpdateTodoRequest,
-  encodeUpdateTodoResponse
+  Endpoints.updateTodoEndpoint(service),
+  Transports.decodeUpdateTodoRequest,
+  Transports.encodeUpdateTodoResponse
 )
 
 const deleteTodo = HTTPServer(
-  deleteTodoEndpoint(service),
-  encodeDeleteTodoResponse,
-  decodeDeleteTodoRequest
+  Endpoints.deleteTodoEndpoint(service),
+  Transports.encodeDeleteTodoResponse,
+  Transports.decodeDeleteTodoRequest
 )
 
 const app = express()
