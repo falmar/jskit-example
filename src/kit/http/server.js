@@ -1,4 +1,5 @@
 const defaultOptions = {
+  // catch unhandled errors
   errorHandler: res => err => {
     // do something with errors
     res.status(500)

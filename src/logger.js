@@ -8,7 +8,7 @@ export default class Logger {
     try {
       const arr = await this.svc.index()
 
-      this.logger.log('amount: ', arr.length)
+      this.logger.log('TODOS found: ', arr.length)
 
       return arr
     } catch (err) {
@@ -32,11 +32,11 @@ export default class Logger {
     }
   }
 
-  async save (todo) {
+  async save (oldTodo) {
     try {
-      todo = await this.svc.save(todo)
+      const todo = await this.svc.save(oldTodo)
 
-      this.logger.log(`saving:`, todo)
+      this.logger.log(`saving TODO:`, oldTodo)
 
       return todo
     } catch (err) {
@@ -50,7 +50,7 @@ export default class Logger {
     try {
       todo = await this.svc.update(id, todo)
 
-      this.logger.log(`updating [${id}]:`, todo)
+      this.logger.log(`updating TODO [${id}]:`, todo)
 
       return todo
     } catch (err) {
@@ -64,7 +64,7 @@ export default class Logger {
     try {
       const r = await this.svc.delete(id)
 
-      this.logger.log('deleted:', id)
+      this.logger.log('deleted TODO:', id)
 
       return r
     } catch (err) {
