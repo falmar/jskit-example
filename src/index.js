@@ -1,14 +1,14 @@
 import express from 'express'
 import bodyParser from 'body-parser'
 
-import DataLayer from './todo'
+import DataLayer from './data'
 import Service from './service'
 import Logger from './logger'
 
 import * as Endpoints from './endpoint'
 import * as Transports from './transport'
 
-import { NewServer as HTTPServer } from './kit/http/server'
+import { NewServer as HTTPServer } from './kit/http'
 
 let service = new Service(new DataLayer())
 service = new Logger(service, console)
