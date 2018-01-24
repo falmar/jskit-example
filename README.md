@@ -1,3 +1,3 @@
-# node-starter
+# jskit-example
 
-Basic Starter for NodeJS with WebPack
+Super simple theory implementation of gokit on nodejs
