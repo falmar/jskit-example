@@ -8,7 +8,13 @@ export default class Service {
   }
 
   async load (id) {
-    return this.dataLayer.load(id)
+    const todo = await this.dataLayer.load(id)
+
+    if (!todo) {
+      throw new Error(`TODO [${id}]: not found`)
+    }
+
+    return todo
   }
 
   async save (todo) {

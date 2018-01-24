@@ -7,7 +7,7 @@
     "clean": "rimraf build",
     "build": "eslint src && npm run clean && webpack -p --config webpack.config.prod.js",
     "watch": "NODE_ENV=development webpack --watch --config webpack.config.dev.js",
-    "start": "node build/server.js",
+    "start": "nodemon build/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "David Lavieri",
@@ -24,6 +24,7 @@
     "eslint-plugin-node": "^5.2.0",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
+    "nodemon": "^1.14.11",
     "rimraf": "^2.6.2",
     "webpack": "^3.6.0",
     "webpack-dev-server": "^2.9.1"
@@ -31,5 +32,13 @@
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "^4.16.2"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "test/*",
+      "docs/*",
+      "src/*"
+    ],
+    "delay": "2500"
   }
 }
