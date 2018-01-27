@@ -2,10 +2,16 @@ const defaultOptions = {
   // catch unhandled errors
   errorHandler: res => err => {
     // do something with errors
-    res.status(500)
+    let code = 500
+
+    if (err.name === 'NOTFOUND') {
+      code = 404
+    }
+
+    res.status(code)
     res.header('Content-Type', 'application/json')
     res.send({
-      status: 500,
+      status: code,
       error: 'Oops something went wrong',
       developerMessage: err.message
     })

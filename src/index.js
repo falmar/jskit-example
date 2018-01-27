@@ -39,8 +39,8 @@ const updateTodo = HTTPServer(
 
 const deleteTodo = HTTPServer(
   Endpoints.deleteTodoEndpoint(service),
-  Transports.encodeDeleteTodoResponse,
-  Transports.decodeDeleteTodoRequest
+  Transports.decodeDeleteTodoRequest,
+  Transports.encodeDeleteTodoResponse
 )
 
 const app = express()
