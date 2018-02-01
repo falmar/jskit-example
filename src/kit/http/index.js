@@ -4,8 +4,10 @@ const defaultOptions = {
     // do something with errors
     let code = 500
 
-    if (err.name === 'NOTFOUND') {
-      code = 404
+    switch (err.name) {
+      case 'NOTFOUND':
+        code = 404
+        break
     }
 
     res.status(code)

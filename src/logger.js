@@ -26,7 +26,7 @@ export default class Logger {
 
       return todo
     } catch (err) {
-      this.logger.error(`Error while loading todos: ${err.message}`)
+      this.logger.error(`Error while loading todo: ${err.message}`)
 
       throw err
     }
@@ -54,7 +54,7 @@ export default class Logger {
 
       return todo
     } catch (err) {
-      this.logger.error(`Error while updatig todo ${id}: ${err.message}`)
+      this.logger.error(`Error while updating todo ${id}: ${err.message}`)
 
       throw err
     }

@@ -1,9 +1,9 @@
-// Super High Performance/Scalable Database
-
 const NotFoundErr = new Error('TODO: Not found')
 NotFoundErr.name = 'NOTFOUND'
 
-export default class TodoDataLayer {
+// Super High Performance/Scalable Database lol
+
+export default class TodoArrayDataLayer {
   constructor () {
     this.data = []
   }

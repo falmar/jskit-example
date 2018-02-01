@@ -1,7 +1,7 @@
 import express from 'express'
 import bodyParser from 'body-parser'
 
-import DataLayer from './data'
+import DataLayer from './arrayLayer'
 import Service from './service'
 import Logger from './logger'
 
